@@ -62,7 +62,8 @@ function hex_md5(s){ return binl2hex(core_md5(str2binl(s), s.length * 8));}funct
 function mpwd_generate(){var master=document.getElementById('masterpwd1').value;if (master != '' && master != null) {
 host = document.getElementById('domain1').value;
 var p=hex_md5(master+':'+host).substr(0,8);
-document.getElementById('genpwd1').value = p;
+var $input = document.getElementById("genpwd1");
+$input.value = p;
 if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
   var el = $input.get(0);
   var editable = el.contentEditable;
@@ -80,10 +81,10 @@ if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
   el.contentEditable = editable;
   el.readOnly = readOnly;
 } else {
-  document.getElementById('genpwd1').select();
+  $input.select();
 }
 document.execCommand('copy');
-document.getElementById('genpwd1').blur();}
+$input.blur();}
 };
 
 window.onload = function() {
