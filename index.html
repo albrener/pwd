@@ -62,7 +62,27 @@ function hex_md5(s){ return binl2hex(core_md5(str2binl(s), s.length * 8));}funct
 function mpwd_generate(){var master=document.getElementById('masterpwd1').value;if (master != '' && master != null) {
 host = document.getElementById('domain1').value;
 var p=hex_md5(master+':'+host).substr(0,8);
-document.getElementById('genpwd1').value = p;}
+var $input = $('getpwd1);
+$input.val(p);
+if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+  var el = $input.get(0);
+  var editable = el.contentEditable;
+  var readOnly = el.readOnly;
+  el.contentEditable = true;
+  el.readOnly = false;
+  var range = document.createRange();
+  range.selectNodeContents(el);
+  var sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+  el.setSelectionRange(0, 999999);
+  el.contentEditable = editable;
+  el.readOnly = readOnly;
+} else {
+  $input.select();
+}
+document.execCommand('copy');
+$input.blur();}
 };
 
 window.onload = function() {
