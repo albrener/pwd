@@ -94,15 +94,16 @@ window.onload = function() {
 <table>
 <tr>
     <td>Master Key:</td>
-    <td><input type="password" id="masterpwd1" onkeyup="mpwd_generate()" onchange="mpwd_generate()"/></td>
+    <td><input type="password" id="masterpwd1"/></td>
 </tr>
 <tr>
     <td>Domain:</td>
-    <td><input type="url" id="domain1" onkeyup="mpwd_generate()" onchange="mpwd_generate()"/></td>
+    <td><input type="text" id="domain1"/></td>
 </tr>
 <tr>
     <td>Password:</td>
-    <td><input type="text" id="genpwd1" onkeyup="mpwd_generate()" onchange="mpwd_generate()"/></td>
+    <td><input type="text" id="genpwd1"/></td>
+    <td><input type="submit" value="Generate" onclick="mpwd_generate()"/>
 </tr>
 </table>
 </form>
