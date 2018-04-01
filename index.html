@@ -62,29 +62,7 @@ function hex_md5(s){ return binl2hex(core_md5(str2binl(s), s.length * 8));}funct
 function mpwd_generate(){var master=document.getElementById('masterpwd1').value;if (master != '' && master != null) {
 host = document.getElementById('domain1').value;
 var p=hex_md5(master+':'+host).substr(0,8);
-var $input = document.getElementById("genpwd1");
-$input.value = p;
-if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
-  var el = $input.get(0);
-  var editable = el.contentEditable;
-  var readOnly = el.readOnly;
-  el.contentEditable = true;
-  el.readOnly = false;
-  var range = document.createRange();
-  range.selectNodeContents(el);
-  var se
-  
-  l = window.getSelection();
-  sel.removeAllRanges();
-  sel.addRange(range);
-  el.setSelectionRange(0, 999999);
-  el.contentEditable = editable;
-  el.readOnly = readOnly;
-} else {
-  $input.select();
-}
-document.execCommand('copy');
-$input.blur();}
+document.getElementById('genpwd1').value = p;}
 };
 
 window.onload = function() {
@@ -96,16 +74,15 @@ window.onload = function() {
 <table>
 <tr>
     <td>Master Key:</td>
-    <td><input type="password" id="masterpwd1"/></td>
+    <td><input type="password" id="masterpwd1" onkeyup="mpwd_generate()" onchange="mpwd_generate()"/></td>
 </tr>
 <tr>
     <td>Domain:</td>
-    <td><input type="text" id="domain1"/></td>
+    <td><input type="url" id="domain1" onkeyup="mpwd_generate()" onchange="mpwd_generate()"/></td>
 </tr>
 <tr>
     <td>Password:</td>
-    <td><input type="text" id="genpwd1"/></td>
-    <td><input type="submit" value="Generate" onclick="mpwd_generate()"/>
+    <td><input type="text" id="genpwd1" onkeyup="mpwd_generate()" onchange="mpwd_generate()"/></td>
 </tr>
 </table>
 </form>
